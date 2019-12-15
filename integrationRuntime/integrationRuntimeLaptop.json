@@ -1,0 +1,7 @@
+{
+	"name": "integrationRuntimeLaptop",
+	"properties": {
+		"type": "SelfHosted",
+		"description": "Karen's Laptop"
+	}
+}

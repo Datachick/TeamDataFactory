@@ -1,0 +1,482 @@
+{
+	"name": "Copy data from on premise SQL Server to Blob",
+	"properties": {
+		"description": "Copy data from laptop DB to blob\n\nYou can also go to \"Copy Data Tool\" to get the pipeline for more connectors and scenarios.",
+		"activities": [
+			{
+				"name": "LocalADV_to_Blob",
+				"description": "Copy data from SQL server to Azure Blob file",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 2,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "LaptopADVW"
+					},
+					{
+						"name": "Destination",
+						"value": "factoryfiles//"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource"
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"dataIntegrationUnits": 0,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "BusinessEntityID"
+								},
+								"sink": {
+									"name": "BusinessEntityID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "Title"
+								},
+								"sink": {
+									"name": "Title",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FirstName"
+								},
+								"sink": {
+									"name": "FirstName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MiddleName"
+								},
+								"sink": {
+									"name": "MiddleName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LastName"
+								},
+								"sink": {
+									"name": "LastName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Suffix"
+								},
+								"sink": {
+									"name": "Suffix",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "JobTitle"
+								},
+								"sink": {
+									"name": "JobTitle",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TxNUM"
+								},
+								"sink": {
+									"name": "TxNUM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PhoneNumberType"
+								},
+								"sink": {
+									"name": "PhoneNumberType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EmailAddress"
+								},
+								"sink": {
+									"name": "EmailAddress",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EmailPromotion"
+								},
+								"sink": {
+									"name": "EmailPromotion",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "AddressLine1"
+								},
+								"sink": {
+									"name": "AddressLine1",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AddressLine2"
+								},
+								"sink": {
+									"name": "AddressLine2",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "City"
+								},
+								"sink": {
+									"name": "City",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "StateProvinceName"
+								},
+								"sink": {
+									"name": "StateProvinceName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PostalCode"
+								},
+								"sink": {
+									"name": "PostalCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CountryRegionName"
+								},
+								"sink": {
+									"name": "CountryRegionName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TerritoryName"
+								},
+								"sink": {
+									"name": "TerritoryName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TerritoryGroup"
+								},
+								"sink": {
+									"name": "TerritoryGroup",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesQuota"
+								},
+								"sink": {
+									"name": "SalesQuota",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesYTD"
+								},
+								"sink": {
+									"name": "SalesYTD",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesLastYear"
+								},
+								"sink": {
+									"name": "SalesLastYear",
+									"type": "Decimal"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "LaptopGWorks",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SalesPersonsCSV",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CSV to JSON",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "LocalADV_to_Blob",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"wildcardFileName": "*"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "JsonSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "JsonWriteSettings",
+							"quoteAllText": true,
+							"filePattern": "setOfObjects"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "BusinessEntityID",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['BusinessEntityID']"
+								}
+							},
+							{
+								"source": {
+									"name": "Title",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['Title']"
+								}
+							},
+							{
+								"source": {
+									"name": "FirstName",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['FirstName']"
+								}
+							},
+							{
+								"source": {
+									"name": "MiddleName",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['MiddleName']"
+								}
+							},
+							{
+								"source": {
+									"name": "LastName",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['LastName']"
+								}
+							},
+							{
+								"source": {
+									"name": "Suffix",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['Suffix']"
+								}
+							},
+							{
+								"source": {
+									"name": "JobTitle",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['JobTitle']"
+								}
+							},
+							{
+								"source": {
+									"name": "TxNUM",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['TxNUM']"
+								}
+							},
+							{
+								"source": {
+									"name": "PhoneNumberType",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['PhoneNumberType']"
+								}
+							},
+							{
+								"source": {
+									"name": "EmailAddress",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['EmailAddress']"
+								}
+							},
+							{
+								"source": {
+									"name": "EmailPromotion",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['EmailPromotion']"
+								}
+							},
+							{
+								"source": {
+									"name": "AddressLine1",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['AddressLine1']"
+								}
+							},
+							{
+								"source": {
+									"name": "AddressLine2",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['AddressLine2']"
+								}
+							},
+							{
+								"source": {
+									"name": "City",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['City']"
+								}
+							},
+							{
+								"source": {
+									"name": "StateProvinceName",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['StateProvinceName']"
+								}
+							},
+							{
+								"source": {
+									"name": "PostalCode",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['PostalCode']"
+								}
+							},
+							{
+								"source": {
+									"name": "CountryRegionName",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['CountryRegionName']"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SalesPersonsCSV",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SalesPersonVIPs",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": []
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

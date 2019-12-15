@@ -1,0 +1,106 @@
+{
+	"name": "SourceDataset_eka",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SqlServer ADW",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "BusinessEntityID",
+				"type": "int"
+			},
+			{
+				"name": "Title",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FirstName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "MiddleName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LastName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Suffix",
+				"type": "nvarchar"
+			},
+			{
+				"name": "JobTitle",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TxNUM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PhoneNumberType",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EmailAddress",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EmailPromotion",
+				"type": "int"
+			},
+			{
+				"name": "AddressLine1",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AddressLine2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "City",
+				"type": "nvarchar"
+			},
+			{
+				"name": "StateProvinceName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PostalCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CountryRegionName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TerritoryName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TerritoryGroup",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SalesQuota",
+				"type": "money"
+			},
+			{
+				"name": "SalesYTD",
+				"type": "money"
+			},
+			{
+				"name": "SalesLastYear",
+				"type": "money"
+			}
+		],
+		"typeProperties": {
+			"schema": "Sales",
+			"table": "vSalesPerson"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

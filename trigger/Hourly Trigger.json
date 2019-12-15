@@ -1,0 +1,25 @@
+{
+	"name": "Hourly Trigger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "Copy data from on premise SQL Server to Blob",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Hour",
+				"interval": 1,
+				"startTime": "2019-12-11T23:52:00Z",
+				"endTime": "2019-12-12T03:52:00Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}

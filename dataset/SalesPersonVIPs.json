@@ -1,0 +1,18 @@
+{
+	"name": "SalesPersonVIPs",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "TeamData Lab Files",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "factoryfiles"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
