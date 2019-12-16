@@ -27,7 +27,8 @@
 				],
 				"typeProperties": {
 					"source": {
-						"type": "SqlSource"
+						"type": "SqlServerSource",
+						"queryTimeout": "02:00:00"
 					},
 					"sink": {
 						"type": "DelimitedTextSink",
@@ -249,7 +250,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "LaptopGWorks",
+						"referenceName": "SQLServerLaptopSalesPeople",
 						"type": "DatasetReference"
 					}
 				],
@@ -308,155 +309,20 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "BusinessEntityID",
+									"name": "genres",
 									"type": "String"
 								},
 								"sink": {
-									"path": "$['BusinessEntityID']"
+									"path": "$['genres']"
 								}
 							},
 							{
 								"source": {
-									"name": "Title",
+									"name": "Rating",
 									"type": "String"
 								},
 								"sink": {
-									"path": "$['Title']"
-								}
-							},
-							{
-								"source": {
-									"name": "FirstName",
-									"type": "String"
-								},
-								"sink": {
-									"path": "$['FirstName']"
-								}
-							},
-							{
-								"source": {
-									"name": "MiddleName",
-									"type": "String"
-								},
-								"sink": {
-									"path": "$['MiddleName']"
-								}
-							},
-							{
-								"source": {
-									"name": "LastName",
-									"type": "String"
-								},
-								"sink": {
-									"path": "$['LastName']"
-								}
-							},
-							{
-								"source": {
-									"name": "Suffix",
-									"type": "String"
-								},
-								"sink": {
-									"path": "$['Suffix']"
-								}
-							},
-							{
-								"source": {
-									"name": "JobTitle",
-									"type": "String"
-								},
-								"sink": {
-									"path": "$['JobTitle']"
-								}
-							},
-							{
-								"source": {
-									"name": "TxNUM",
-									"type": "String"
-								},
-								"sink": {
-									"path": "$['TxNUM']"
-								}
-							},
-							{
-								"source": {
-									"name": "PhoneNumberType",
-									"type": "String"
-								},
-								"sink": {
-									"path": "$['PhoneNumberType']"
-								}
-							},
-							{
-								"source": {
-									"name": "EmailAddress",
-									"type": "String"
-								},
-								"sink": {
-									"path": "$['EmailAddress']"
-								}
-							},
-							{
-								"source": {
-									"name": "EmailPromotion",
-									"type": "String"
-								},
-								"sink": {
-									"path": "$['EmailPromotion']"
-								}
-							},
-							{
-								"source": {
-									"name": "AddressLine1",
-									"type": "String"
-								},
-								"sink": {
-									"path": "$['AddressLine1']"
-								}
-							},
-							{
-								"source": {
-									"name": "AddressLine2",
-									"type": "String"
-								},
-								"sink": {
-									"path": "$['AddressLine2']"
-								}
-							},
-							{
-								"source": {
-									"name": "City",
-									"type": "String"
-								},
-								"sink": {
-									"path": "$['City']"
-								}
-							},
-							{
-								"source": {
-									"name": "StateProvinceName",
-									"type": "String"
-								},
-								"sink": {
-									"path": "$['StateProvinceName']"
-								}
-							},
-							{
-								"source": {
-									"name": "PostalCode",
-									"type": "String"
-								},
-								"sink": {
-									"path": "$['PostalCode']"
-								}
-							},
-							{
-								"source": {
-									"name": "CountryRegionName",
-									"type": "String"
-								},
-								"sink": {
-									"path": "$['CountryRegionName']"
+									"path": "$['Rating']"
 								}
 							}
 						]
