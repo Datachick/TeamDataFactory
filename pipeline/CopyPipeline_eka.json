@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy_eka",
+				"name": "CopySalePeopleToBlob",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -50,13 +50,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "SQLServerLaptopCustomerSet",
+						"referenceName": "SQLServerLaptopSalesPeople",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "DestinationDataset_eka",
+						"referenceName": "SalesPeopleCSV",
 						"type": "DatasetReference"
 					}
 				]

@@ -1,5 +1,5 @@
 {
-	"name": "SQLServerLaptopCustomerSet",
+	"name": "SQLServerLaptopSalesPeople",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "LaptopSQLServer",
