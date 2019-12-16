@@ -1,8 +1,8 @@
 {
-	"name": "SourceDataset_eka",
+	"name": "SQLServerLaptopCustomerSet",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "SqlServer ADW",
+			"referenceName": "LaptopSQLServer",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -10,7 +10,8 @@
 		"schema": [
 			{
 				"name": "BusinessEntityID",
-				"type": "int"
+				"type": "int",
+				"precision": 10
 			},
 			{
 				"name": "Title",
@@ -50,7 +51,8 @@
 			},
 			{
 				"name": "EmailPromotion",
-				"type": "int"
+				"type": "int",
+				"precision": 10
 			},
 			{
 				"name": "AddressLine1",
@@ -86,15 +88,21 @@
 			},
 			{
 				"name": "SalesQuota",
-				"type": "money"
+				"type": "money",
+				"precision": 19,
+				"scale": 4
 			},
 			{
 				"name": "SalesYTD",
-				"type": "money"
+				"type": "money",
+				"precision": 19,
+				"scale": 4
 			},
 			{
 				"name": "SalesLastYear",
-				"type": "money"
+				"type": "money",
+				"precision": 19,
+				"scale": 4
 			}
 		],
 		"typeProperties": {
