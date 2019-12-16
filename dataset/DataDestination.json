@@ -1,0 +1,133 @@
+{
+	"name": "DataDestination",
+	"properties": {
+		"description": "Connect to your data destination store.",
+		"linkedServiceName": {
+			"referenceName": "SQLDW",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"structure": [
+			{
+				"name": "CustomerKey",
+				"type": "Int32"
+			},
+			{
+				"name": "GeographyKey",
+				"type": "Int32"
+			},
+			{
+				"name": "CustomerAlternateKey",
+				"type": "String"
+			},
+			{
+				"name": "Title",
+				"type": "String"
+			},
+			{
+				"name": "FirstName",
+				"type": "String"
+			},
+			{
+				"name": "MiddleName",
+				"type": "String"
+			},
+			{
+				"name": "LastName",
+				"type": "String"
+			},
+			{
+				"name": "NameStyle",
+				"type": "Boolean"
+			},
+			{
+				"name": "BirthDate",
+				"type": "Date"
+			},
+			{
+				"name": "MaritalStatus",
+				"type": "String"
+			},
+			{
+				"name": "Suffix",
+				"type": "String"
+			},
+			{
+				"name": "Gender",
+				"type": "String"
+			},
+			{
+				"name": "EmailAddress",
+				"type": "String"
+			},
+			{
+				"name": "YearlyIncome",
+				"type": "Decimal"
+			},
+			{
+				"name": "TotalChildren",
+				"type": "Byte"
+			},
+			{
+				"name": "NumberChildrenAtHome",
+				"type": "Byte"
+			},
+			{
+				"name": "EnglishEducation",
+				"type": "String"
+			},
+			{
+				"name": "SpanishEducation",
+				"type": "String"
+			},
+			{
+				"name": "FrenchEducation",
+				"type": "String"
+			},
+			{
+				"name": "EnglishOccupation",
+				"type": "String"
+			},
+			{
+				"name": "SpanishOccupation",
+				"type": "String"
+			},
+			{
+				"name": "FrenchOccupation",
+				"type": "String"
+			},
+			{
+				"name": "HouseOwnerFlag",
+				"type": "String"
+			},
+			{
+				"name": "NumberCarsOwned",
+				"type": "Byte"
+			},
+			{
+				"name": "AddressLine1",
+				"type": "String"
+			},
+			{
+				"name": "AddressLine2",
+				"type": "String"
+			},
+			{
+				"name": "Phone",
+				"type": "String"
+			},
+			{
+				"name": "DateFirstPurchase",
+				"type": "Date"
+			},
+			{
+				"name": "CommuteDistance",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[DimCustomer]"
+		}
+	}
+}

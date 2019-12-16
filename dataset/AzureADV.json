@@ -7,7 +7,72 @@
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
-		"type": "AzureSqlTable"
+		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "CustomerID",
+				"type": "Int32"
+			},
+			{
+				"name": "NameStyle",
+				"type": "Boolean"
+			},
+			{
+				"name": "Title",
+				"type": "String"
+			},
+			{
+				"name": "FirstName",
+				"type": "String"
+			},
+			{
+				"name": "MiddleName",
+				"type": "String"
+			},
+			{
+				"name": "LastName",
+				"type": "String"
+			},
+			{
+				"name": "Suffix",
+				"type": "String"
+			},
+			{
+				"name": "CompanyName",
+				"type": "String"
+			},
+			{
+				"name": "SalesPerson",
+				"type": "String"
+			},
+			{
+				"name": "EmailAddress",
+				"type": "String"
+			},
+			{
+				"name": "Phone",
+				"type": "String"
+			},
+			{
+				"name": "PasswordHash",
+				"type": "String"
+			},
+			{
+				"name": "PasswordSalt",
+				"type": "String"
+			},
+			{
+				"name": "rowguid",
+				"type": "Guid"
+			},
+			{
+				"name": "ModifiedDate",
+				"type": "DateTime"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[SalesLT].[Customer]"
+		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
 }
